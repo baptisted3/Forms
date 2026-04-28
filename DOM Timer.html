@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Simple Timer</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                padding: 20px;
+            }
+
+            #timerDisplay {
+                font-size: 2rem;
+                font-weight: bold;
+                margin-bottom: 15px;
+            }
+
+            input[type="button"] {
+                margin: 5px 0;
+                padding: 6px 12px;
+                font-size: 1rem;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div id="timerDisplay">0</div>
+
+        <input type="button" id="startTimer" value="Start Timer"><br>
+        <input type="button" id="stopTimer" value="Stop Timer"><br>
+        <input type="button" id="resetTimer" value="Reset Timer"><br>
+
+        <script>
+            // current time in seconds
+            let seconds = 0;
+
+            // will hold the interval ID when the timer is running
+            let timerId = null;
+
+            //reference to the display element
+            const display = document.getElementById("timerDisplay");
+
+            // function to update the display using innerHTML
+            function updateDisplay() {
+                display.innerHTML = seconds;
+            }
+
+            // START button
+            document.getElementById("startTimer").addEventListener("click", function () { 
+                if (timerId === null) {
+                    timeId = setInterval(function () {
+                        seconds++;
+                        updateDisplay();
+                    }, 1000); // 1000 ms = 1 second
+                }
+            });    
+            
+            // STOP button
+            document.getElementById("stopTimer").addEventListener("click", function () {
+                if (timerId !== null) {
+                    clearInterval(countID);
+                    timerId = null;
+                }
+            });
+
+            // RESET button
+            document.getElementById("resetTimer").addEventListener("click", function () {
+                // stop the timer if it's running
+                if (timerId !== null) {
+                    clearInterval(timerId);
+                    timerId = null;
+                }
+                // reset time and display
+                seconds = 0;
+                updateDisplay();
+            });
+
+            // initialize display (in case you want a different starting text later)
+            updateDisplay();        
+        </script>
+
+</body>
+</html>

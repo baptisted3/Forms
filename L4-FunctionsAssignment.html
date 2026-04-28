@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Functions Assignment</title>
+</head>
+<body>
+  <input id="nameInput" type="text" placeholder="Enter Name">
+  <input id="ageInput" type="number" placeholder="Enter Age">
+  <input id="myButton" type="button" value="Generate Song">
+  <p id="output"></p>
+
+  <script>
+
+// 1. Create a function named happyBirthday
+function happyBirthday() {
+    document.getElementById("output").innerHTML += "Happy Birthday to you!<br>";
+}
+
+// 2. Create a function named birthdayName that receives an argument from the nameInput field
+function birthdayName(name) {
+    document.getElementById("output").innerHTML += `Happy Birthday dear ${name},<br>`;
+}
+
+// 3. Create a function named personalizedSong that receives age and name
+function personalizedSong(age, name) {
+    // Output the age message
+    document.getElementById("output").innerHTML += `You're ${age} years old today!<br><br>`;
+
+    // Call happyBirthday twice
+    happyBirthday();
+    happyBirthday();
+
+    // Call birthdayName with the actual name
+    birthdayName(name);
+
+    // Call happyBirthday one last time
+    happyBirthday();
+}
+
+// 4. Add event listener to the button
+document.getElementById("myButton").addEventListener("click", function() {
+    // Clear the output area
+    document.getElementById("output").innerHTML = "";
+
+    // Retrieve values from input fields
+    let userName = document.getElementById("nameInput").value;
+    let userAge = document.getElementById("ageInput").value;
+
+    // Call personalizedSong
+    personalizedSong(userAge, userName);
+});
+   
+  </script>
+  </body>
+</html>

@@ -1,0 +1,158 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #222;
+}
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #1e3a5f;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    margin-bottom: 25px;
+}
+
+form {
+    display: grid;
+    gap: 15px;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+input[type="text"], select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.checkbox-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.checkbox-label {
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+button {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.2s ease;
+}
+
+#submitBtn {
+    background: #1e3a5f;
+    color: white;
+}
+
+#submitBtn:hover {
+    background: #274c7a;
+}
+
+#taskmanager {
+    display: grid;
+    gap: 15px;
+}
+
+.task {
+    border-left: 6px solid #999999;
+    padding: 15px;
+    border-radius: 10px;
+    background: #fafafa;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.task-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.task-meta {
+    margin: 0;
+    font-size: 14px;
+    color: #555555;
+}
+
+.task-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.task-buttons button {
+    font-size: 14px;
+    padding: 8px 12px;
+}
+
+.edit-btn {
+    background: #f0ad4e;
+    color: white;
+}
+
+.complete-btn {
+    background: #5cb85c;
+    color: white;
+}
+
+.delete-btn {
+    background: #d9534f;
+    color: white;
+}
+
+.empty-message {
+    text-align: center;
+    color: #777777;
+    padding: 20px;
+}
+
+@media (max-width: 600px) {
+.task-header {
+    flex-direction: column;
+}
+}

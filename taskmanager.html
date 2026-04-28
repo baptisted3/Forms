@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-9"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>TaskFlow Solutions - Interactive Task Manager</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <div class="container">
+        <h1>Interactive Task Manager</h1>
+        <p class="subtitle">TaskFlow Solutions</p>
+
+        <section class="card">
+            <form id="taskForm">
+                <div class="form-group">
+                    <label for="taskName">Task Name</label>
+                    <input type="text" id="taskName" name="taskName" placeholder="Enter task name"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="priority">Priority</label>
+                    <select id="priority" name="priority">
+                        <option value="High">High</option>
+                        <option value="Medium" selected>Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
+                </div>
+
+                <div class="checkbox-row">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="important" name="important"/>
+                        Mark as Important
+                    </label>
+
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="completed" name="completed"/>
+                        Mark as Completed
+                    </label>
+                </div>
+
+                <button type="submit" id="submitBtn">Add Task</button>
+            </form>
+        </section>
+
+        <section class="card">
+            <div id="taskmanager"></div>
+        </section>
+    </div>
+
+    <script src="task.js"></script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE  html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Amortization Schedule</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 24px;
+        line-height: 1.5;
+      }
+
+      #output {
+        margin-top: 20px;
+        padding: 12px;
+        border: 1px solid #ccc;
+        white-space: pre-wrap;
+        background-color: #f9f9f9;
+      }
+
+      button {
+        padding: 10px 16px;
+        cursor: pointer;
+      }
+    </style>
+</head>
+<body>
+    <p><strong>Name:</strong> Dirnelle Baptiste</p>
+    <p><strong>Email:</strong> dgbaptiste@my.waketech.edu</p>
+    <p><strong>Date:</strong> 2026-3-08</p>
+
+    <button id="Button1">Run Amortization Calculator</button>
+
+    <div id="output"></div>
+
+    <script>
+        const button = document.getElementById("Button1");
+        const output = document.getElementById("output");
+
+        button.addEventListener("click", function () {
+          output.innerHTML = "";
+
+          let loanAmount = parseFloat(prompt("Enter the loan amount (without commas):"));
+          let termYears = parseInt(prompt("Enter the loan term in years (15 or 30):"));
+          const interestRate = 0.0575;
+
+          if (isNaN(loanAmount) || loanAmount <= 0) {
+            alert("Please enter a valid loan amount.");
+            return;
+          }
+
+          if (termYears !== 15 && termYears !== 30) {
+            alert("Loan term must be 15 or 30 years.");
+            return;
+          }
+
+          const termMonths = termYears * 12;
+
+          let monthlyPayment = (
+            (((interestRate / 12) * loanAmount) / 
+            (1 - Math.pow(1 + (interestRate / 12), (termYears * -12))))
+          ).toFixed(2);
+
+          monthlyPayment = parseFloat(monthlyPayment);
+
+          const totalInterest = ((monthlyPayment * termMonths) - loanAmount).toFixed(2);
+          const totalMortgageAmount = (loanAmount + parseFloat(totalInterest)).toFixed(2);
+
+          let result = "";
+          result += "Mortgage term in years: " + termYears + "\n";
+          result += "Mortgage interest rate: " + (interestRate * 100).toFixed(2) + "%\n";
+          result += "Mortgage amount (total loan amount = loanAmount + totalInterest): $" + totalMortgageAmount + "\n";
+          result += "Total interest amount: $" + totalInterest + "\n";
+          result += "Total mortgage amount: $" + totalMortgageAmount + "\n";
+          result += "Monthly payment: $" + monthlyPayment.toFixed(2) + "\n\n";
+          result += "Amortization Schedule\n";
+          result += "Month\tPayment\t\tBalance\n";
+
+          let balance = parseFloat(totalMortgageAmount);
+
+          for (let month = 1; month <= termMonths; month++) {
+            balance = balance - monthlyPayment;
+
+            if (balance < 0) {
+              balance = 0;
+            }
+
+            result += month + "\t$" + monthlyPayment.toFixed(2) + "\t\t$" + balance.toFixed(2) + "\n";
+
+            if (balance === 0) {
+               result += "\nThis is the Ending Amortization Calculator...\n";
+               break;
+            }
+          }
+
+          output.textContent = result;
+        });
+    </script>
+</body>
+</html>
